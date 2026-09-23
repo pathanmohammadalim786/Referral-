@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ReferralHub | Internship Referral Management</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+        <div class="brand-logo">R</div>
+        <div>
+            <h2>ReferralHub</h2>
+            <span>Internship Portal</span>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <button class="nav-item active" data-section="dashboard">
+            <span>⌂</span>
+            Dashboard
+        </button>
+
+        <button class="nav-item" data-section="referrals">
+            <span>➕</span>
+            Refer Candidate
+        </button>
+
+        <button class="nav-item" data-section="candidates">
+            <span>👥</span>
+            Candidates
+        </button>
+
+        <button class="nav-item" data-section="analytics">
+            <span>📊</span>
+            Analytics
+        </button>
+
+        <button class="nav-item" data-section="about">
+            <span>ℹ</span>
+            About Task
+        </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <div class="task-mini-card">
+            <div class="mini-icon">🎯</div>
+            <div>
+                <strong>Referral Target</strong>
+                <small>5 Active Candidates</small>
+            </div>
+        </div>
+
+        <button class="gform-sidebar-btn" id="sidebarGForm">
+            Submit G-Form →
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+<main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+        <button class="mobile-menu" id="mobileMenu">
+            ☰
+        </button>
+
+        <div class="page-heading">
+            <h1 id="pageTitle">Dashboard</h1>
+            <p>Manage your internship referrals professionally.</p>
+        </div>
+
+        <div class="topbar-actions">
+
+            <button class="icon-btn" id="themeToggle" title="Toggle Theme">
+                🌙
+            </button>
+
+            <button class="icon-btn notification-btn">
+                🔔
+                <span></span>
+            </button>
+
+            <div class="profile">
+                <div class="profile-avatar">MP</div>
+                <div class="profile-info">
+                    <strong>Mohammadalim</strong>
+                    <small>Referral Manager</small>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- DASHBOARD -->
+    <section class="page-section active" id="dashboard">
+
+        <div class="welcome-banner">
+
+            <div>
+                <span class="eyebrow">INTERNSHIP REFERRAL PROGRAM</span>
+
+                <h2>Build your network. Refer talented candidates. 🤝</h2>
+
+                <p>
+                    Help friends, classmates and your network discover
+                    internship opportunities across multiple domains.
+                </p>
+
+                <button class="primary-btn" id="welcomeAddBtn">
+                    + Refer a Candidate
+                </button>
+            </div>
+
+            <div class="welcome-art">
+                <div class="floating-card card-one">👨‍💻</div>
+                <div class="floating-card card-two">🤝</div>
+                <div class="floating-card card-three">🚀</div>
+                <div class="main-illustration">👥</div>
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon purple">👥</div>
+                <div>
+                    <span>Total Candidates</span>
+                    <h3 id="totalCandidates">0</h3>
+                    <small>All referrals</small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">✓</div>
+                <div>
+                    <span>Active Candidates</span>
+                    <h3 id="activeCandidates">0</h3>
+                    <small>Interested & responsive</small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">💼</div>
+                <div>
+                    <span>Domains</span>
+                    <h3 id="domainCount">0</h3>
+                    <small>Different domains</small>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon blue">🎯</div>
+                <div>
+                    <span>Completion</span>
+                    <h3 id="completionPercent">0%</h3>
+                    <small>Referral target</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESS + QUICK ACTIONS -->
+        <div class="dashboard-grid">
+
+            <div class="panel progress-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Referral Progress</h3>
+                        <p>Minimum requirement: 5 active candidates</p>
+                    </div>
+
+                    <span class="target-badge">Target: 5</span>
+                </div>
+
+                <div class="progress-number">
+                    <strong id="progressNumber">0</strong>
+                    <span>/ 5 Active Candidates</span>
+                </div>
+
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <div class="progress-footer">
+                    <span id="progressMessage">
+                        Start referring candidates.
+                    </span>
+
+                    <span id="progressPercent">0%</span>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Quick Actions</h3>
+                        <p>Manage your referral workflow</p>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+
+                    <button class="quick-action" id="quickAdd">
+                        <span>➕</span>
+                        <div>
+                            <strong>Add Candidate</strong>
+                            <small>Create a new referral</small>
+                        </div>
+                    </button>
+
+                    <button class="quick-action" id="quickExport">
+                        <span>📥</span>
+                        <div>
+                            <strong>Export CSV</strong>
+                            <small>Download referral data</small>
+                        </div>
+                    </button>
+
+                    <button class="quick-action" id="quickForm">
+                        <span>📋</span>
+                        <div>
+                            <strong>Submit G-Form</strong>
+                            <small>Complete the official task</small>
+                        </div>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RECENT -->
+        <div class="panel">
+
+            <div class="panel-header">
+                <div>
+                    <h3>Recent Referrals</h3>
+                    <p>Your latest candidate referrals</p>
+                </div>
+
+                <button class="text-btn" data-go="candidates">
+                    View All →
+                </button>
+            </div>
+
+            <div id="recentList" class="recent-list">
+                <div class="empty-state">
+                    <div>👥</div>
+                    <h4>No referrals yet</h4>
+                    <p>Add your first candidate to get started.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REFERRALS -->
+    <section class="page-section" id="referrals">
+
+        <div class="section-intro">
+            <span class="eyebrow">REFERRAL MANAGEMENT</span>
+            <h2>Refer a Candidate</h2>
+            <p>
+                Add genuine and responsive candidates from your network.
+            </p>
+        </div>
+
+        <div class="referral-layout">
+
+            <div class="panel referral-form-card">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Candidate Information</h3>
+                        <p>Enter accurate candidate details.</p>
+                    </div>
+                </div>
+
+                <form id="candidateForm">
+
+                    <input type="hidden" id="candidateId">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Candidate Name *</label>
+                            <input
+                                type="text"
+                                id="candidateName"
+                                placeholder="Enter full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input
+                                type="email"
+                                id="candidateEmail"
+                                placeholder="candidate@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input
+                                type="tel"
+                                id="candidatePhone"
+                                placeholder="10-digit mobile number"
+                                maxlength="10"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label>Internship Domain *</label>
+                            <select id="candidateDomain" required>
+                                <option value="">Select domain</option>
+                                <option>AI / Machine Learning</option>
+                                <option>Web Development</option>
+                                <option>Python Development</option>
+                                <option>Data Science</option>
+                                <option>Java Development</option>
+                                <option>App Development</option>
+                                <option>UI/UX Design</option>
+                                <option>Cyber Security</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Candidate Status *</label>
+                            <select id="candidateStatus" required>
+                                <option value="Active">Active</option>
+                                <option value="Interested">Interested</option>
+                                <option value="Contacted">Contacted</option>
+                                <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Notes</label>
+                            <textarea
+                                id="candidateNote"
+                                rows="4"
+                                placeholder="Add optional notes about the candidate..."
+                            ></textarea>
+                        </div>
+
+                    </div>
+
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="candidateConsent" required>
+                        <span>
+                            I confirm that the candidate is genuinely interested
+                            in the internship opportunity.
+                        </span>
+                    </label>
+
+                    <div class="form-actions">
+
+                        <button type="button" class="secondary-btn" id="clearForm">
+                            Clear
+                        </button>
+
+                        <button type="submit" class="primary-btn">
+                            <span id="submitText">Add Candidate</span>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <div class="panel requirement-card">
+
+                <div class="requirement-icon">🎯</div>
+
+                <h3>Task Requirements</h3>
+
+                <div class="requirement-list">
+
+                    <div>
+                        <span>✓</span>
+                        <p>Minimum <strong>5 active candidates</strong></p>
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        <p>Candidates should be genuinely interested</p>
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        <p>Candidates should be responsive</p>
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        <p>Any internship domain is welcome</p>
+                    </div>
+
+                    <div>
+                        <span>✓</span>
+                        <p>Submit details through the official G-Form</p>
+                    </div>
+
+                </div>
+
+                <button class="primary-btn full-btn" id="requirementFormBtn">
+                    Open Official G-Form →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CANDIDATES -->
+    <section class="page-section" id="candidates">
+
+        <div class="section-intro-row">
+
+            <div>
+                <span class="eyebrow">CANDIDATE DATABASE</span>
+                <h2>Candidate Management</h2>
+                <p>Search, filter and manage your referrals.</p>
+            </div>
+
+            <button class="primary-btn" id="candidateAddBtn">
+                + Add Candidate
+            </button>
+
+        </div>
+
+
+        <div class="panel">
+
+            <div class="filter-bar">
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search by name or email..."
+                    >
+                </div>
+
+                <select id="domainFilter">
+                    <option value="">All Domains</option>
+                    <option>AI / Machine Learning</option>
+                    <option>Web Development</option>
+                    <option>Python Development</option>
+                    <option>Data Science</option>
+                    <option>Java Development</option>
+                    <option>App Development</option>
+                    <option>UI/UX Design</option>
+                    <option>Cyber Security</option>
+                    <option>Other</option>
+                </select>
+
+                <select id="statusFilter">
+                    <option value="">All Status</option>
+                    <option>Active</option>
+                    <option>Interested</option>
+                    <option>Contacted</option>
+                    <option>Pending</option>
+                </select>
+
+                <button class="secondary-btn" id="resetFilters">
+                    Reset
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Candidate</th>
+                            <th>Domain</th>
+                            <th>Status</th>
+                            <th>Added</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="candidateTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYTICS -->
+    <section class="page-section" id="analytics">
+
+        <div class="section-intro">
+            <span class="eyebrow">PERFORMANCE</span>
+            <h2>Referral Analytics</h2>
+            <p>Understand your referral activity.</p>
+        </div>
+
+        <div class="analytics-grid">
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Domain Distribution</h3>
+                        <p>Candidates by internship domain</p>
+                    </div>
+                </div>
+
+                <div id="domainChart" class="bar-chart"></div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Status Overview</h3>
+                        <p>Current candidate status</p>
+                    </div>
+                </div>
+
+                <div id="statusChart" class="status-chart"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="page-section" id="about">
+
+        <div class="section-intro">
+            <span class="eyebrow">INTERNSHIP TASK</span>
+            <h2>Referral Task</h2>
+            <p>Internship Referral Management System</p>
+        </div>
+
+        <div class="panel about-panel">
+
+            <div class="about-icon">🤝</div>
+
+            <h2>Bring Your Network In!</h2>
+
+            <p>
+                This project is designed to organize internship referrals,
+                track candidate engagement and monitor the minimum referral
+                requirement of five active candidates.
+            </p>
+
+            <div class="about-grid">
+
+                <div>
+                    <strong>Minimum Requirement</strong>
+                    <span>5 Active Candidates</span>
+                </div>
+
+                <div>
+                    <strong>Candidate Type</strong>
+                    <span>Genuinely Interested & Responsive</span>
+                </div>
+
+                <div>
+                    <strong>Domains</strong>
+                    <span>Any Internship Domain</span>
+                </div>
+
+                <div>
+                    <strong>Final Step</strong>
+                    <span>Submit Official G-Form</span>
+                </div>
+
+            </div>
+
+            <button class="primary-btn" id="aboutFormBtn">
+                Open G-Form →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>© 2026 ReferralHub · Internship Referral Management System</p>
+        <p>Built with HTML · CSS · JavaScript</p>
+    </footer>
+
+</main>
+
+
+<!-- MODAL -->
+<div class="modal-overlay" id="candidateModal">
+
+    <div class="modal">
+
+        <button class="modal-close" id="modalClose">×</button>
+
+        <div class="modal-header">
+            <div class="modal-icon">👤</div>
+            <div>
+                <h3 id="modalTitle">Add Candidate</h3>
+                <p>Enter candidate referral details.</p>
+            </div>
+        </div>
+
+        <form id="modalForm">
+
+            <div class="form-group">
+                <label>Candidate Name *</label>
+                <input type="text" id="modalName" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="modalEmail" required>
+            </div>
+
+            <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" id="modalPhone" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+                <label>Internship Domain *</label>
+                <select id="modalDomain" required>
+                    <option value="">Select domain</option>
+                    <option>AI / Machine Learning</option>
+                    <option>Web Development</option>
+                    <option>Python Development</option>
+                    <option>Data Science</option>
+                    <option>Java Development</option>
+                    <option>App Development</option>
+                    <option>UI/UX Design</option>
+                    <option>Cyber Security</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Status *</label>
+                <select id="modalStatus">
+                    <option>Active</option>
+                    <option>Interested</option>
+                    <option>Contacted</option>
+                    <option>Pending</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+
+                <button type="button" class="secondary-btn" id="modalCancel">
+                    Cancel
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Save Candidate
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <span id="toastIcon">✓</span>
+    <div>
+        <strong id="toastTitle">Success</strong>
+        <p id="toastMessage">Operation completed.</p>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
